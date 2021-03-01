@@ -2,7 +2,7 @@
 
 1- First run 'npm install' in project directory to install all the required dependencies.
 
-2-Also run 'npm install --save -g forever'.Forever helps to restart the node server when stuck.
+2-Also run 'npm install -g --force forever'.Forever helps to restart the node server when stuck.
 
 3-Run 'forever server.js' in project directory to start the server.After running the server all the data from input.csv will move to mongodb.
 
