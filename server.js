@@ -82,13 +82,19 @@ if (isMainThread) {
       });
     });
 } else {
-  connection.dropDatabase().catch((err) => {
-    console.log(err);
-  });
-
-  insertInDb(workerData).then(() => {
-    parentPort.postMessage({ completed: true });
-  });
+  connection
+    .dropDatabase()
+    .then((res) => {
+      console.log("database dropped");
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+    .finally(() => {
+      insertInDb(workerData).then(() => {
+        parentPort.postMessage({ completed: true });
+      });
+    });
 
   parentPort.close();
 }
